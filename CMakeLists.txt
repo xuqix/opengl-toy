@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 2.8)
 
-project (practise)
+project (toy)
 
-set(EXECABLE_NAME practise)
+set(EXECABLE_NAME toy)
 set(INCLUDES 
     include
     external

@@ -1,4 +1,4 @@
-fun-opengl: just do something with opengl!
+opengl-toy: just do something with opengl!
 ========================================
 
 **Required:** opengl 3.3+
