@@ -9,8 +9,13 @@ opengl-toy: just do something with opengl!
 * glm-0.9.7.6(a math library for opengl) 
 * SOIL(simple opengl image library)
 
-Compile
------
+Platform
+--------
+
+* OSX
+
+Compile 
+-------
 
     mkdir build
     cmake ..
