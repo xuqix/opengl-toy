@@ -8,24 +8,24 @@ struct Camera::PrivateData
 {
     Camera::Type type;
 
-    vec3 position;
-    vec3 front;
-    vec3 up;
-    vec3 worldUp;
-    vec3 rotation;
-    vec3 right;
+    Vec3 position;
+    Vec3 front;
+    Vec3 up;
+    Vec3 worldUp;
+    Vec3 rotation;
+    Vec3 right;
 
-    mat4 viewMatrix;
-    mat4 projectionMatrix;
+    Mat4 viewMatrix;
+    Mat4 projectionMatrix;
 };
 
-Camera::Camera(vec3 position, vec3 up, float rotationX, float rotationY):_data(new PrivateData())
+Camera::Camera(Vec3 position, Vec3 up, float rotationX, float rotationY):_data(new PrivateData())
 {
     _data->type = Type::NONE;
     _data->position = position;
     _data->worldUp = up;
-    _data->rotation = vec3(rotationX, rotationY, 0.0f);
-    _data->front = vec3(0, 0, -1.0f);
+    _data->rotation = Vec3(rotationX, rotationY, 0.0f);
+    _data->front = Vec3(0, 0, -1.0f);
     updateCameraVectors();
 }
 
@@ -51,39 +51,39 @@ Camera::Type Camera::getType() const
     return _data->type;
 }
 
-void Camera::setCameraFront(const vec3 &front)
+void Camera::setCameraFront(const Vec3 &front)
 {
     _data->front = front;
 }
 
-const Camera::vec3& Camera::getRotation() const
+const Camera::Vec3& Camera::getRotation() const
 {
     return _data->rotation;
 }
 
-void Camera::setRotation(const vec3 &rotation)
+void Camera::setRotation(const Vec3 &rotation)
 {
     _data->rotation = rotation;
 }
 
-const Camera::mat4& Camera::getViewMatrix() const
+const Camera::Mat4& Camera::getViewMatrix() const
 {
     return _data->viewMatrix;
 }
 
-const Camera::mat4& Camera::getProjectionMatrix() const
+const Camera::Mat4& Camera::getProjectionMatrix() const
 {
     return _data->projectionMatrix;
 }
 
-Camera::mat4 Camera::getViewProjectionMatrix() const
+Camera::Mat4 Camera::getViewProjectionMatrix() const
 {
     return _data->projectionMatrix * _data->viewMatrix;
 }
 
 void Camera::updateCameraVectors()
 {
-    vec3 front;
+    Vec3 front;
     front.x = cos(glm::radians(_data->rotation.y)) * cos(glm::radians(_data->rotation.x));
     front.y = sin(glm::radians(_data->rotation.x));
     front.z = sin(glm::radians(_data->rotation.y)) * cos(glm::radians(_data->rotation.x));

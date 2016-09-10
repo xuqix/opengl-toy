@@ -7,8 +7,8 @@
 class Camera
 {
 public:
-    typedef glm::vec3 vec3;
-    typedef glm::mat4 mat4;
+    typedef glm::Vec3 Vec3;
+    typedef glm::Mat4 Mat4;
 
     enum class Type
     {
@@ -17,7 +17,7 @@ public:
         PERSPECTIVE
     };
 
-    Camera(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = vec3(0.0f, 1.0f, 0.0f), float rotationX = 0.0f, float rotationY = 0.0f);
+    Camera(Vec3 position = Vec3(0.0f, 0.0f, 0.0f), Vec3 up = Vec3(0.0f, 1.0f, 0.0f), float rotationX = 0.0f, float rotationY = 0.0f);
 
     ~Camera();
 
@@ -27,17 +27,17 @@ public:
 
     Type getType() const;
 
-    void setCameraFront(const vec3 &front);
+    void setCameraFront(const Vec3 &front);
 
-    const vec3& getRotation() const;
+    const Vec3& getRotation() const;
 
-    void setRotation(const vec3 &rotation);
+    void setRotation(const Vec3 &rotation);
 
-    const mat4& getViewMatrix() const;
+    const Mat4& getViewMatrix() const;
 
-    const mat4& getProjectionMatrix() const;
+    const Mat4& getProjectionMatrix() const;
 
-    mat4 getViewProjectionMatrix() const;
+    Mat4 getViewProjectionMatrix() const;
 
 private:
     void updateCameraVectors();
