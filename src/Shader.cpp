@@ -5,9 +5,7 @@
 #include <sstream>
 #include <assert.h>
 
-#include <OpenGL/gl3.h>
-#define GLFW_INCLUDE_GLCOREARB
-#include <GLFW/glfw3.h>
+#include "GL.h"
 
 struct Shader::PrivateData
 {
