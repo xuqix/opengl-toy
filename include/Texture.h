@@ -17,8 +17,8 @@ public:
     int object() const;
 
 private:
-    Texture(const Texture&);
-    Texture& operator=(const Texture&);
+    Texture(const Texture&) = delete;
+    Texture& operator=(const Texture&) = delete;
 
     struct PrivateData;
     PrivateData *_data;

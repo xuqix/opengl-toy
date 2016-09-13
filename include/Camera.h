@@ -40,10 +40,12 @@ public:
     Mat4 getViewProjectionMatrix() const;
 
 private:
+    Camera(const Camera&) = delete;
+    Camera& operator=(const Camera&) = delete;
+
     void updateCameraVectors();
 
     struct PrivateData;
-
     PrivateData *_data;
 };
 

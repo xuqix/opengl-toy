@@ -27,8 +27,10 @@ public:
     Format getFormat() const;
 
 private:
-    struct PrivateData;
+    Image(const Image&) = delete;
+    Image& operator=(const Image&) = delete;
 
+    struct PrivateData;
     PrivateData *_data;
 };
 

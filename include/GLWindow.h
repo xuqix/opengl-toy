@@ -36,8 +36,10 @@ public:
     void* windowId() const;
 
 private:
-    struct PrivateData;
+    GLWindow(const GLWindow&) = delete;
+    GLWindow& operator=(const GLWindow&) = delete;
 
+    struct PrivateData;
     PrivateData *_data;
 
     friend class GLFWEventHandler;

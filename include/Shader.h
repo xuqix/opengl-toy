@@ -18,8 +18,10 @@ public:
     void use();
 
 private:
-    struct PrivateData;
+    Shader(const Shader&) = delete;
+    Shader& operator=(const Shader&) = delete;
 
+    struct PrivateData;
     PrivateData *_data;
 };
 
