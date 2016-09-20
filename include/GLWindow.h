@@ -10,13 +10,19 @@
 class GLWindow
 {
 public:
+    GLWindow();
+
     GLWindow(int width, int height, const std::string &title);
 
     ~GLWindow();
 
-    bool windowShouldClose() const;
+    bool shouldClose() const;
 
     void swapBuffers();
+
+    void clear(const glm::Vec4 &color = glm::Vec4(1.0f,1.0f,1.0f,1.0f));
+
+    void pollEvents();
 
     void setCursorVisible(bool isVisible);
 

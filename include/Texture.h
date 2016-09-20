@@ -16,6 +16,8 @@ public:
 
     int object() const;
 
+    void active() const;
+
 private:
     Texture(const Texture&) = delete;
     Texture& operator=(const Texture&) = delete;

@@ -37,7 +37,7 @@ Image::Image(const std::string & path):_data(new PrivateData())
     if(isPng(path))
     {
         int width, height;
-        unsigned char* image = SOIL_load_image(path.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
+        unsigned char* image = SOIL_load_image(path.c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
         if(image)
         {
             _data->width = width;

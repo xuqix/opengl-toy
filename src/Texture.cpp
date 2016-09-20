@@ -1,10 +1,11 @@
 #include "Texture.h"
 #include "GL.h"
+#include "DebugHelper.h"
 
 struct Texture::PrivateData
 {
     Size size = Size(0, 0);
-    GLuint texture = 0;
+    GLuint texture = -1;
 };
 
 Texture::Texture(Image * image):_data(new PrivateData())
@@ -21,7 +22,7 @@ Texture::Texture(Image * image):_data(new PrivateData())
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image->getWidth(), image->getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, image->getData());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getWidth(), image->getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getData());
     glGenerateMipmap(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -42,4 +43,9 @@ int Texture::object() const
     return (int)_data->texture;
 }
 
+void Texture::active() const
+{
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _data->texture);
+}
 

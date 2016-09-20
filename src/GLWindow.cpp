@@ -215,6 +215,8 @@ private:
 };
 GLWindow *GLFWEventHandler::_view = nullptr;
 
+GLWindow::GLWindow():GLWindow(480, 300, "glwindow") {}
+
 GLWindow::GLWindow(int width, int height, const std::string & title):_data(new PrivateData())
 {
     _data->title = title;
@@ -237,6 +239,8 @@ GLWindow::GLWindow(int width, int height, const std::string & title):_data(new P
         int w, h;
         glfwGetFramebufferSize(_data->window, &w, &h);
         glViewport(0, 0, w, h);
+
+        glEnable(GL_DEPTH_TEST);
     }
 }
 
@@ -245,7 +249,7 @@ GLWindow::~GLWindow()
     delete _data;
 }
 
-bool GLWindow::windowShouldClose() const
+bool GLWindow::shouldClose() const
 {
     if (_data->window)
         return glfwWindowShouldClose(_data->window);
@@ -257,6 +261,17 @@ void GLWindow::swapBuffers()
     if(!_data->window) return;
 
     glfwSwapBuffers(_data->window);
+}
+
+void GLWindow::clear(const glm::Vec4 &color)
+{
+    glClearColor(color.r, color.g, color.b, color.a);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void GLWindow::pollEvents()
+{
+    glfwPollEvents();
 }
 
 void GLWindow::setCursorVisible(bool isVisible)

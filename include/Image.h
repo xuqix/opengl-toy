@@ -26,6 +26,8 @@ public:
 
     Format getFormat() const;
 
+    bool valid() const { return getData() != nullptr; }
+
 private:
     Image(const Image&) = delete;
     Image& operator=(const Image&) = delete;
