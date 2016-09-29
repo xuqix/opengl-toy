@@ -23,9 +23,13 @@ public:
 
     void setOrtho(float zoomX, float zoomY, float nearPlane, float farPlane);
 
+    void setOrtho(float left, float right, float bottom, float top, float nearPlane, float farPlane);
+
     void setPerspective(float fieldOfView, float aspect, float nearPlane, float farPlane);
 
     Type getType() const;
+
+    const Vec3& getCameraFront() const;
 
     void setCameraFront(const Vec3 &front);
 
