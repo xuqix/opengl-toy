@@ -1,6 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <iostream>
 #include <cstdio>
 
 #include "mathlib.h"
@@ -8,6 +9,11 @@
 #define UNUSED_PARAM(var) (void)(var)
 
 namespace Utils {
+
+    inline void print(const std::string &str)
+    {
+        std::cout << str << std::endl;
+    }
 
     inline void print(const glm::vec2 &v)
     {

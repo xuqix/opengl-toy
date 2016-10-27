@@ -4,6 +4,8 @@
 
 #include "GL.h"
 
+static Camera *g_camera;
+
 struct Camera::PrivateData
 {
     Camera::Type type;
@@ -27,11 +29,14 @@ Camera::Camera(Vec3 position, Vec3 up, float rotationX, float rotationY):_data(n
     _data->rotation = Vec3(rotationX, rotationY, 0.0f);
     _data->front = Vec3(0, 0, -1.0f);
     updateCameraVectors();
+
+    g_camera = this;
 }
 
 Camera::~Camera()
 {
     delete _data;
+    g_camera = nullptr;
 }
 
 void Camera::setOrtho(float zoomX, float zoomY, float nearPlane, float farPlane)
@@ -107,3 +112,7 @@ void Camera::updateCameraVectors()
     _data->viewMatrix = glm::lookAt(_data->position, _data->position + _data->front, _data->up);
 }
 
+Camera* Camera::getCurrent()
+{
+    return g_camera;
+}

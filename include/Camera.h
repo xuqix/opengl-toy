@@ -43,6 +43,8 @@ public:
 
     Mat4 getViewProjectionMatrix() const;
 
+    static Camera* getCurrent();
+
 private:
     Camera(const Camera&) = delete;
     Camera& operator=(const Camera&) = delete;
