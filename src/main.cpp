@@ -12,6 +12,7 @@
 #include "Texture.h"
 #include "Image.h"
 #include "Utils.h"
+#include "Sprite.h"
 
 using namespace std;
 using namespace Utils;
@@ -79,6 +80,9 @@ int main()
 
     float amendX = 0.0f, amendY = 0.0f, speed = 0.01f;
     Camera camera(glm::Vec3(0, 0, 2.0f));
+    camera.setPerspective(45.0f, 1.0f, 0.1f, 100.0f);
+
+    Sprite *sprite = new Sprite("resource/pic1.png");
     while(!window.shouldClose())
     {
         if(window.getKeyState(KeyEvent::KeyCode::KEY_W))
@@ -92,25 +96,7 @@ int main()
 
         window.clear();
 
-        shader.use();
-        shader.setUniformValue(Shader::UNIFORM_TEXTURE0, &tex);
-        glm::mat4 model, view, projection;
-        model = glm::translate(model, glm::vec3(amendX, amendY, 0));
-        //model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0, 0, 1));
-        shader.setUniformValue(Shader::UNIFORM_M_MATRIX, model);
-
-        camera.setRotation(glm::vec3(10.0f, 10.0f, 0.0f));
-        view = camera.getViewMatrix();
-        shader.setUniformValue(Shader::UNIFORM_V_MATRIX, view);
-
-        //camera.setOrtho(-1, 1, -1, 1, 0, 4);
-        camera.setPerspective(45.0f, 1.0f, 0.1f, 100.0f);
-        projection = camera.getProjectionMatrix();
-        shader.setUniformValue(Shader::UNIFORM_P_MATRIX, projection);
-
-        glBindVertexArray(vao);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
+        sprite->draw();
 
         window.swapBuffers();
         window.pollEvents();
