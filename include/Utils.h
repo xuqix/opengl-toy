@@ -10,9 +10,10 @@
 
 namespace Utils {
 
-    inline void print(const std::string &str)
+    template<typename T>
+    inline void print(const T &t)
     {
-        std::cout << str << std::endl;
+        std::cout << t << std::endl;
     }
 
     inline void print(const glm::vec2 &v)
