@@ -21,6 +21,7 @@ out vec4 color;
 in vec4 outColor;
 void main() {
     color = outColor;
+    if (color.a < 0.1) discard;
 }
 );
 
@@ -50,6 +51,7 @@ in vec2 TexCoord;
 uniform sampler2D texture0;
 void main() {
     color = texture(texture0, TexCoord) * outColor;
+    if (color.a < 0.1) discard;
 }
 );
 
@@ -71,6 +73,7 @@ out vec4 color;
 in vec4 outColor;
 void main() {
     color = outColor;
+    if (color.a < 0.1) discard;
 }
 );
 
@@ -97,6 +100,7 @@ in vec2 TexCoord;
 uniform sampler2D texture0;
 void main() {
     color = texture(texture0, TexCoord) * outColor;
+    if (color.a < 0.1) discard;
 }
 );
 
