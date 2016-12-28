@@ -64,7 +64,7 @@ int main()
     glBindVertexArray(0);
 
     float amendW=0, amendS=0, amendA=0, amendD=0;
-    window.setKeyEventCallback([=](GLWindow *win, KeyEvent e){
+    window.setKeyEventCallback([&](GLWindow *win, KeyEvent e)mutable{
         switch(e.keyCode)
         {
             case KeyEvent::KeyCode::KEY_W:
@@ -82,7 +82,7 @@ int main()
     Camera camera(glm::Vec3(0, 0, 2.0f));
     camera.setPerspective(45.0f, 1.0f, 0.1f, 100.0f);
 
-    Sprite *sprite = new Sprite("resource/pic1.png");
+    Sprite *sprite = new Sprite("resource/pic2.png");
     while(!window.shouldClose())
     {
         if(window.getKeyState(KeyEvent::KeyCode::KEY_W))
@@ -96,6 +96,7 @@ int main()
 
         window.clear();
 
+        sprite->setPosition(glm::vec3(amendX, amendY, 0));
         sprite->draw();
 
         window.swapBuffers();
